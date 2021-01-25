@@ -76,5 +76,23 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_switch_layout -> {
+                // Sets isLinearLayoutManager (a Boolean) to the opposite value
+                isLinearLayoutManager = !isLinearLayoutManager
+                // Sets layout and icon
+                chooseLayout()
+                setIcon(item)
 
+                return true
+            }
+            //  Otherwise, do nothing and use the core event handling
+
+            // when clauses require that all possible paths be accounted for explicitly,
+            //  for instance both the true and false cases if the value is a Boolean,
+            //  or an else to catch all unhandled cases.
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
